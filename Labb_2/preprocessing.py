@@ -14,11 +14,11 @@ ratings = readin("ratings", drop=["timestamp"])
 movies  = readin("movies")
 tags    = readin("tags", drop=["timestamp","userId"]) 
 
-print(
-    f"ratings : {ratings.shape}\n"
-    f"movies  : {movies.shape}\n"
-    f"tags    : {tags.shape}"
-)
+# print(
+#     f"ratings : {ratings.shape}\n"
+#     f"movies  : {movies.shape}\n"
+#     f"tags    : {tags.shape}"
+# )
 
 
 # Redduce movies.csv
@@ -202,19 +202,18 @@ tf = type_of_tag_per_movie.apply(lambda x: type_of_tag_per_movie_gbo[x.name[0], 
 tf_idf = type_of_tag_per_movie.apply(lambda x: tf[x.name[0], x.name[1]] * idf[x.name[1]] )
 
 
-# # tf-idf Cosine
-# tf_idf_copy = tf_idf.copy()
-# # (!) If you want to use reset_index then can not be the same as one of the index names  
-# #     because the name becomes the name of the value column 
-# tf_idf_copy.name = "weights"
-# tf_idf_copy = tf_idf_copy.reset_index()
-# tf_idf_pivot = tf_idf_copy.pivot(index="movieId", columns="tag", values="weights")
-# tf_idf_pivot.fillna(0, inplace=True)
+# tf-idf Cosine
+tf_idf_copy = tf_idf.copy()
+# (!) If you want to use reset_index then can not be the same as one of the index names  
+#     because the name becomes the name of the value column 
+tf_idf_copy.name = "weights"
+tf_idf_copy = tf_idf_copy.reset_index()
+tf_idf_pivot = tf_idf_copy.pivot(index="movieId", columns="tag", values="weights")
+tf_idf_pivot.fillna(0, inplace=True)
 
-# tf_idf_cs_matrix = cosine_similarity(tf_idf_pivot)
-# tf_idf_cs_matrix.shape
-# tf_idf_cs_matrix = pd.DataFrame(tf_idf_cs_matrix, index=tags_genres_pivot.index, columns=tags_genres_pivot.index )
-# tf_idf_cs_matrix.to_csv("data/tf_idf_cosine_sim.csv")
+tf_idf_cs_matrix = cosine_similarity(tf_idf_pivot)
+tf_idf_cs_matrix = pd.DataFrame(tf_idf_cs_matrix, index=tags_genres_pivot.index, columns=tags_genres_pivot.index )
+tf_idf_cs_matrix.to_csv("data/tf_idf_cosine_sim.csv")
 
 
 
