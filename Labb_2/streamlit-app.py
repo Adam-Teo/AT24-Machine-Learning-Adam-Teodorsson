@@ -7,7 +7,7 @@ import pandas as pd
 #     movies_cosine_sim = pd.read_csv(uploaded_file).set_index("movieId", drop=True)
 #     movies_cosine_sim = movies_cosine_sim.iloc[0:1300]
 
-movies_cosine_sim = pd.read_csv("Labb2/streamlit-data/movies_cosine_sim.csv").set_index("movieId", drop=True)
+movies_cosine_sim = pd.read_csv("Labb_2/streamlit-data/movies_cosine_sim.csv").set_index("movieId", drop=True)
 movies_cosine_sim = movies_cosine_sim.iloc[0:1300]
 
 # uploaded_file = st.file_uploader("streamlit-data/movies_cosine_sim.csv")
