@@ -2,32 +2,33 @@ import streamlit as st
 import time
 import pandas as pd 
 
-uploaded_file = st.file_uploader("streamlit-data/movies_cosine_sim.csv")
-if uploaded_file is not None:
-    movies_cosine_sim = pd.read_csv(uploaded_file).set_index("movieId", drop=True)
-    movies_cosine_sim = movies_cosine_sim.iloc[0:1300]
+# uploaded_file = st.file_uploader("streamlit-data/movies_cosine_sim.csv")
+# if uploaded_file is not None:
+#     movies_cosine_sim = pd.read_csv(uploaded_file).set_index("movieId", drop=True)
+#     movies_cosine_sim = movies_cosine_sim.iloc[0:1300]
 
-# movies_cosine_sim = pd.read_csv("streamlit-data/movies_cosine_sim.csv").set_index("movieId", drop=True)
-# movies_cosine_sim = movies_cosine_sim.iloc[0:1300]
+movies_cosine_sim = pd.read_csv("Labb2/streamlit-data/movies_cosine_sim.csv").set_index("movieId", drop=True)
+movies_cosine_sim = movies_cosine_sim.iloc[0:1300]
 
-uploaded_file = st.file_uploader("streamlit-data/movies_cosine_sim.csv")
-if uploaded_file is not None:
-    tf_cosine_sim = pd.read_csv(uploaded_file).set_index("movieId", drop=True)
-    tf_cosine_sim = tf_cosine_sim.iloc[0:1300]
+# uploaded_file = st.file_uploader("streamlit-data/movies_cosine_sim.csv")
+# if uploaded_file is not None:
+#     tf_cosine_sim = pd.read_csv(uploaded_file).set_index("movieId", drop=True)
+#     tf_cosine_sim = tf_cosine_sim.iloc[0:1300]
 
-# tf_cosine_sim = pd.read_csv("streamlit-data/tf_cosine_sim.csv").set_index("movieId", drop=True)
-# tf_cosine_sim = tf_cosine_sim.iloc[0:1300]
+tf_cosine_sim = pd.read_csv("Labb_2/streamlit-data/tf_cosine_sim.csv").set_index("movieId", drop=True)
+tf_cosine_sim = tf_cosine_sim.iloc[0:1300]
 
-uploaded_file = st.file_uploader("streamlit-data/movies_cosine_sim.csv")
-if uploaded_file is not None:
-    tf_idf_cosine_sim = pd.read_csv(uploaded_file).set_index("movieId", drop=True)
-    tf_idf_cosine_sim = tf_idf_cosine_sim.iloc[0:1300]
+# uploaded_file = st.file_uploader("streamlit-data/movies_cosine_sim.csv")
+# if uploaded_file is not None:
+#     tf_idf_cosine_sim = pd.read_csv(uploaded_file).set_index("movieId", drop=True)
+#     tf_idf_cosine_sim = tf_idf_cosine_sim.iloc[0:1300]
 
-# tf_idf_cosine_sim = pd.read_csv("streamlit-data/tf_idf_cosine_sim.csv").set_index("movieId", drop=True)
-# tf_idf_cosine_sim = tf_idf_cosine_sim.iloc[0:1300]
+tf_idf_cosine_sim = pd.read_csv("Labb_2/streamlit-data/tf_idf_cosine_sim.csv").set_index("movieId", drop=True)
+tf_idf_cosine_sim = tf_idf_cosine_sim.iloc[0:1300]
 
-titles = pd.read_csv("streamlit-data/titles.csv").set_index("movieId", drop=True)
-popularity_weights = pd.read_csv("streamlit-data/popularity.csv").set_index("movieId", drop=True)
+titles = pd.read_csv("Labb_2/streamlit-data/titles.csv").set_index("movieId", drop=True)
+
+popularity_weights = pd.read_csv("Labb_2/streamlit-data/popularity.csv").set_index("movieId", drop=True)
 #score_weights = pd.read_csv("streamlit-data/score.csv").set_index("movieId", drop=True)
 
 custom_css = f"""
