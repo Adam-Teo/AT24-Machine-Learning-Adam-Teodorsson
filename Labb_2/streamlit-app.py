@@ -152,8 +152,10 @@ if user_input:
         - Prefixes 'The' and 'A' are ignored, so they can be added or omitted, the reult will remain the same
         - If you input a year make sure the formating is correct 'title (yyyy)' example 'Toy Story (1995)'
         - This movie database is limited and might not contain the movie you are looking for, in this case you might want to try the name of a similar movie
-        - Impact of Popularity Slider controls how much the popularity of movies should effect the recomendations
-        - Use Select Type of Tag Weights to switch between different ways to weight the tags
+        - 
+        - Advanced Mode
+        - The 'Impact of Popularity Slider' controls how much the popularity of movies should effect the recomendations
+        - Use 'Select Type of Tag Weights' to switch between different ways to weight the tags
         """
         st.write_stream(stream_text("Troubelshoting"))
         st.write(text_help)
