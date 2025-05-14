@@ -13,11 +13,11 @@ di_csv = {
     for csv 
     in li_csv
     } 
-
-titles = di_csv['titles']
-popularity_weights = di_csv['popularity']
-
 """
+
+
+# titles = li_csv['titles'] pd.read_csv(path+"titles.csv").set_index("movieId", drop=True)
+popularity_weights = pd.read_csv(path+"popularity.csv").set_index("movieId", drop=True)
 
 
 custom_css = f"<style>.stApp {{ background-color: #181818; color: #cfcfcf; }}</style>"
