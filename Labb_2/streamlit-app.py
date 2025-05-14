@@ -3,21 +3,19 @@ import time
 import pandas as pd 
 import re
 
-#path = "C:/Code/AT24-Maskininlärning-Adam-Teodorsson/Labb_2/streamlit-data/"
-path = "streamlit-data/"
+path = "C:/Code/AT24-Maskininlärning-Adam-Teodorsson/Labb_2/streamlit-data/"
+#path = "streamlit-data/"
 
 
-li_csv = ["movies_cosine_sim", "tf_cosine_sim", "tf_idf_cosine_sim"]
+li_csv = ["movies_cosine_sim", "tf_cosine_sim", "tf_idf_cosine_sim", "titles", "popularity" ]
 di_csv = { 
     csv:pd.read_csv(path+csv+".csv").set_index("movieId", drop=True)
     for csv 
     in li_csv
     } 
 
-
-
-titles = pd.read_csv(path+"titles.csv").set_index("movieId", drop=True)
-popularity_weights = pd.read_csv(path+"popularity.csv").set_index("movieId", drop=True)
+titles = di_csv['titles']
+popularity_weights = di_csv['popularity']
 
 
 custom_css = f"<style>.stApp {{ background-color: #181818; color: #cfcfcf; }}</style>"
