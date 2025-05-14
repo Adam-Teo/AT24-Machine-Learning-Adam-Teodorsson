@@ -3,34 +3,24 @@ import time
 import pandas as pd 
 import re
 
-path = "Labb_2/streamlit-data/"
-#path = "streamlit-data/"
+#path = "C:/Code/AT24-Maskininlärning-Adam-Teodorsson/Labb_2/streamlit-data/"
+path = "streamlit-data/"
 
-# Load in the data sets
-# (!) There was a bug I couldn't figure out so I hade to reduce the 
-#     amount of movies to 1300
-movies_cosine_sim = pd.read_csv(path+"movies_cosine_sim.csv").set_index("movieId", drop=True)
-movies_cosine_sim = movies_cosine_sim.iloc[0:1300]
 
-tf_cosine_sim = pd.read_csv(path+"tf_cosine_sim.csv").set_index("movieId", drop=True)
-tf_cosine_sim = tf_cosine_sim.iloc[0:1300]
+li_csv = ["movies_cosine_sim", "tf_cosine_sim", "tf_idf_cosine_sim"]
+di_csv = { 
+    csv:pd.read_csv(path+csv+".csv").set_index("movieId", drop=True)
+    for csv 
+    in li_csv
+    } 
 
-tf_idf_cosine_sim = pd.read_csv(path+"tf_idf_cosine_sim.csv").set_index("movieId", drop=True)
-tf_idf_cosine_sim = tf_idf_cosine_sim.iloc[0:1300]
+
 
 titles = pd.read_csv(path+"titles.csv").set_index("movieId", drop=True)
-
 popularity_weights = pd.read_csv(path+"popularity.csv").set_index("movieId", drop=True)
 
 
-custom_css = f"""
-<style>
-.stApp {{
-    background-color: #181818;
-    color: #cfcfcf;
-}}
-</style>
-"""
+custom_css = f"<style>.stApp {{ background-color: #181818; color: #cfcfcf; }}</style>"
 
 # Used to give a streaming effect to text
 def stream_text(text, stream_word=False):
@@ -93,10 +83,10 @@ if advanced_mode:
 # the year 
 # (!) title duplicates are not implmented
 def check_title(str_input):
-    if str_input in titles["title duplicate"].values:
+   # if str_input in titles["title duplicate"].values:
         #st.markdown("title duplicates")
-        return True, "title duplicates"
-    elif str_input in titles["title"].values:
+   #    return True, "title duplicates"
+    if str_input in titles["title"].values:
         #st.markdown("title")
         return True, "title"
     elif str_input in titles["alt"].values:
@@ -118,9 +108,9 @@ if user_input:
         movieId = str(titles[titles[check_title(user_input)[1]]==user_input].index[0])
      
         switch = { 
-            ":red[Standard]":movies_cosine_sim, 
-            ":red[TF]":tf_cosine_sim,
-            ":red[TF-IDF]":tf_idf_cosine_sim,
+            ":red[Standard]":di_csv["movies_cosine_sim"], 
+            ":red[TF]":di_csv["tf_cosine_sim"],
+            ":red[TF-IDF]":di_csv["tf_idf_cosine_sim"],
         }
 
         # Switch between types of weights
@@ -152,8 +142,8 @@ if user_input:
         - Prefixes 'The' and 'A' are ignored, so they can be added or omitted, the reult will remain the same
         - If you input a year make sure the formating is correct 'title (yyyy)' example 'Toy Story (1995)'
         - This movie database is limited and might not contain the movie you are looking for, in this case you might want to try the name of a similar movie
-        - 
-        - Advanced Mode
+        ___ 
+        Advanced Mode
         - The 'Impact of Popularity Slider' controls how much the popularity of movies should effect the recomendations
         - Use 'Select Type of Tag Weights' to switch between different ways to weight the tags
         """
