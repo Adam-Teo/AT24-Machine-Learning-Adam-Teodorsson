@@ -5,7 +5,7 @@ import re
 
 #path = "C:/Code/AT24-Maskininlärning-Adam-Teodorsson/Labb_2/streamlit-data/"
 #path = "streamlit-data/"
-path = "https://github.com/Adam-Teo/AT24-Machine-Learning-Adam-Teodorsson/tree/main/Labb_2/streamlit-data/"
+path = "/Labb_2/streamlit-data/"
 
 """
 li_csv = ["movies_cosine_sim", "tf_cosine_sim", "tf_idf_cosine_sim", "titles", "popularity" ]
