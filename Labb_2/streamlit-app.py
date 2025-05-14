@@ -3,8 +3,8 @@ import time
 import pandas as pd 
 import re
 
-path = "C:/Code/AT24-Maskininlärning-Adam-Teodorsson/Labb_2/streamlit-data/"
-#path = "streamlit-data/"
+#path = "C:/Code/AT24-Maskininlärning-Adam-Teodorsson/Labb_2/streamlit-data/"
+path = "streamlit-data/"
 
 
 li_csv = ["movies_cosine_sim", "tf_cosine_sim", "tf_idf_cosine_sim", "titles", "popularity" ]
