@@ -16,8 +16,8 @@ di_csv = {
 
 
 
-titles = li_csv['titles'] 
-popularity_weights = li_csv['popularity'] 
+titles = di_csv['titles'] 
+popularity_weights = di_csv['popularity'] 
 
 
 custom_css = f"<style>.stApp {{ background-color: #181818; color: #cfcfcf; }}</style>"
